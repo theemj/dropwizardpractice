@@ -6,7 +6,7 @@ import javax.ws.rs.core.MediaType;
 @Path ("/")
 public class HelloWorldResource {
 
-    String messageOfDay = "";
+    String messageOfDay = "My name is Inigo Montoya. You killed my father. Prepare to die.";
 
     public HelloWorldResource() {
     }
