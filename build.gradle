@@ -1,0 +1,32 @@
+apply plugin: "java"
+apply plugin: "application"
+apply plugin: "eclipse"
+apply plugin: "idea"
+
+// ===============================================
+// Create the source directories for Java projects
+// ===============================================
+task "createDirs" << {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
+
+build {
+    dependsOn "createDirs"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "io.dropwizard:dropwizard-core:0.9.1"
+    compile "io.dropwizard:dropwizard-views:0.9.1"
+    compile "io.dropwizard:dropwizard-views-freemarker:0.9.1"
+}
+
+mainClassName = "edu.meredith.midiate.MidiateApp"
+
+run {
+    args "server", "config.yml"
+}
