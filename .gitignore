@@ -23,3 +23,6 @@ out/
 
 ### Logs ###
 *.log
+
+### Node ###
+node_modules/

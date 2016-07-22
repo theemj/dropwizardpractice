@@ -1,9 +1,9 @@
 package edu.meredith.midiate;
 
+import com.bazaarvoice.dropwizard.assets.ConfiguredAssetsBundle;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import io.dropwizard.views.ViewBundle;
 
 /**
  * Created by Emily on 1/17/2016.
@@ -15,8 +15,8 @@ public class MidiateApp extends Application<MidiateAppConfiguration> {
     }
 
     @Override
-    public void initialize(Bootstrap<MidiateAppConfiguration> boot1) {
-        boot1.addBundle(new ViewBundle<MidiateAppConfiguration>());
+    public void initialize(Bootstrap<MidiateAppConfiguration> bootstrap) {
+        bootstrap.addBundle(new ConfiguredAssetsBundle("/assets/", "/", "index.html"));
 
     }
 

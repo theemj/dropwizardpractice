@@ -3,7 +3,7 @@ package edu.meredith.midiate;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path ("/")
+@Path("/")
 public class HelloWorldResource {
 
     String messageOfDay = "My name is Inigo Montoya. You killed my father. Prepare to die.";
@@ -20,9 +20,9 @@ public class HelloWorldResource {
     @GET
     @Path("/motd")
     @Produces (MediaType.TEXT_HTML)
-    public MessageOfDayView getMessage()
+    public String getMessage()
     {
-        return new MessageOfDayView(messageOfDay);
+        return messageOfDay;
     }
 
     @POST

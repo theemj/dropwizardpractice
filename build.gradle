@@ -21,8 +21,7 @@ repositories {
 
 dependencies {
     compile "io.dropwizard:dropwizard-core:0.9.1"
-    compile "io.dropwizard:dropwizard-views:0.9.1"
-    compile "io.dropwizard:dropwizard-views-freemarker:0.9.1"
+    compile "com.bazaarvoice.dropwizard:dropwizard-configurable-assets-bundle:0.2.2"
 }
 
 mainClassName = "edu.meredith.midiate.MidiateApp"
