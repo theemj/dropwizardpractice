@@ -2,17 +2,55 @@ require('normalize.css/normalize.css');
 require('styles/App.css');
 
 import React from 'react';
+import {NoteComponent} from './Note';
+import {NoteForm} from './NoteForm';
 
-let yeomanImage = require('../images/yeoman.png');
+const $ = require('jquery');
+
 
 class AppComponent extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      //message: 'Unset',
+      //title: '',
+      //body: '',
+      notes: []
+    };
+  }
+
+  componentDidMount() {
+    this.loadNotes();
+  }
+
   render() {
+    const noteComponents = this.state.notes.map((note) => (
+      <NoteComponent
+        onDelete={() => this.loadNotes()}
+        key={note.id}
+        note={note}
+        style={{width: '200px'}}/>
+    ));
+
     return (
       <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
+        {noteComponents}
+
+        <NoteForm onCreate={() => this.loadNotes()}/>
+
       </div>
     );
+  }
+
+  loadNotes() {
+    $.ajax({
+      method: 'GET',
+      url: '/api/note',
+      success: (results) => {
+        this.setState({notes: results});
+      }
+    });
   }
 }
 

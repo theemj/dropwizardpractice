@@ -22,7 +22,7 @@ public class MidiateApp extends Application<MidiateAppConfiguration> {
 
     @Override
     public void run(MidiateAppConfiguration configuration, Environment environment) throws Exception {
-        HelloWorldResource resource = new HelloWorldResource();
+        NoteResource resource = new NoteResource();
         environment.jersey().register(resource);
     }
 
